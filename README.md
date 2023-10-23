@@ -90,3 +90,5 @@ module.exports = {
 
 11. Create a database Utility method file `db.ts` to ensure that only one instance of Prisma Client is being used
 
+12. Creating a new user
+- Make href dynamic, depending if the user is logged in or not
