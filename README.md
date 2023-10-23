@@ -86,3 +86,7 @@ module.exports = {
 
 - Finished the User model
 - Journal model
+- Analysis model
+
+11. Create a database Utility method file `db.ts` to ensure that only one instance of Prisma Client is being used
+
