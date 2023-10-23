@@ -96,6 +96,7 @@ module.exports = {
 - Write creating a new user logic in the `new-user` page
 
 13. Create Journal page
+
 - Layout component
 - Create Journal page
 
@@ -104,3 +105,6 @@ module.exports = {
 15. Selecting journal entries
 - create `auth.ts` file in the `utils` folder to fetch a user from the database using Prisma and Clerk authentication.
 
+16. New Journal Entry UI
+- Create `EntryCard` & `NewEntryCard` components
+- Style the components and add them to the `Journal` page
