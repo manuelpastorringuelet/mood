@@ -98,3 +98,7 @@ module.exports = {
 13. Create Journal page
 - Layout component
 - Create Journal page
+
+14. Add UserButton component from Clerk
+
+15. Create Analysis page
