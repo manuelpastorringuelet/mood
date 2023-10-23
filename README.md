@@ -64,3 +64,20 @@ module.exports = {
 - Add afterSignInUrl and afterSignUpUrl to the Sign-Up component
 
 7. Create a new-user page
+8. Database
+
+- Create a new database in PlanetScale
+- Install the PlanetScale CLI
+- Create new database branch 'dev'
+- Connect the database to the app
+
+9. Prisma
+
+- Install Prisma Client `npm install @prisma/client`
+- Install Prisma as a dev dependency `npm install prisma --save-dev`
+- Initialize Prisma `npx prisma init`
+- Change the provider to `mysql`
+- Add `relationMode = "prisma"` to the schema.prisma file
+- Add the database URL `DATABASE_URL = 'mysql://root@127.0.0.1:3309/<DATABASE_NAME>'` to the .env file
+- Create User model in the schema.prisma file
+- Push the schema to the database `npx prisma db push`
