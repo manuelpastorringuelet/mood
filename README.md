@@ -81,3 +81,8 @@ module.exports = {
 - Add the database URL `DATABASE_URL = 'mysql://root@127.0.0.1:3309/<DATABASE_NAME>'` to the .env file
 - Create User model in the schema.prisma file
 - Push the schema to the database `npx prisma db push`
+
+10. Prisma schemas
+
+- Finished the User model
+- Journal model
