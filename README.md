@@ -101,4 +101,6 @@ module.exports = {
 
 14. Add UserButton component from Clerk
 
-15. Create Analysis page
+15. Selecting journal entries
+- create `auth.ts` file in the `utils` folder to fetch a user from the database using Prisma and Clerk authentication.
+
