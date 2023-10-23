@@ -91,4 +91,10 @@ module.exports = {
 11. Create a database Utility method file `db.ts` to ensure that only one instance of Prisma Client is being used
 
 12. Creating a new user
+
 - Make href dynamic, depending if the user is logged in or not
+- Write creating a new user logic in the `new-user` page
+
+13. Create Journal page
+- Layout component
+- Create Journal page
