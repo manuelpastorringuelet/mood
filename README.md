@@ -103,8 +103,15 @@ module.exports = {
 14. Add UserButton component from Clerk
 
 15. Selecting journal entries
+
 - create `auth.ts` file in the `utils` folder to fetch a user from the database using Prisma and Clerk authentication.
 
 16. New Journal Entry UI
+
 - Create `EntryCard` & `NewEntryCard` components
 - Style the components and add them to the `Journal` page
+
+17. Journal Card
+- onClick event to the `EntryCard` component
+- Api `journal` route to fetch a single journal entry
+- Create `api.ts` file in the `utils` folder to fetch a journal entry from the database using Prisma
