@@ -122,7 +122,13 @@ module.exports = {
 - Structure & style the `EntryCard` component
 
 19. New Entry page
+
 - Create `[id]` folder in the `journal` folder
 - Create `page.tsx` file in the `[id]` folder
 - Use `params` to fetch a single journal entry
 - Add a interface for the `Entry` type using `PrismaClient`
+
+20. Displaying entry details
+- Create `Editor` component
+- Add `getEntry` function to the `Entry` page.
+- Modify the prisma schema, changing ` @@index([userId])` to ` @@index([userId, id])`
