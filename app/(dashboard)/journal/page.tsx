@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { getUserByClerkId } from '@/utils/auth'
 import { prisma } from '@/utils/db'
+import { analyze } from '@/utils/ai'
 
 import EntryCard from '@/components/EntryCard'
 import NewEntryCard from '@/components/NewEntryCard'
@@ -16,6 +17,8 @@ const getEntries = async () => {
       createdAt: 'desc',
     },
   })
+
+  await analyze('create me a journal entry that writes as Marcus Aurelius')
 
   return entries
 }

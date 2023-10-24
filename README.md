@@ -149,4 +149,9 @@ module.exports = {
 - install `react-autosave`
 - implemented `Autosave` in the `Editor` component
 
-23. Sidebar 
+23. Sidebar
+
+24. AI
+
+- Install `langchainjs`
+- Create `ai.ts`
