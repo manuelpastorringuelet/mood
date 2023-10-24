@@ -148,3 +148,5 @@ module.exports = {
 
 - install `react-autosave`
 - implemented `Autosave` in the `Editor` component
+
+23. Sidebar 

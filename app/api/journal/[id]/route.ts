@@ -11,7 +11,6 @@ export const PATCH = async (request: Request, { params }: Params) => {
   const { content } = await request.json()
   const user = await getUserByClerkId()
 
-  console.log(content)
   const updatedEntry = await prisma.journalEntry.update({
     where: {
       userId_id: {
