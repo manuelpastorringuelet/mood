@@ -36,7 +36,7 @@ model JournalEntry {
   @@unique([userId,id])
 }
 
-model Analysis {
+model Analysis {i
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

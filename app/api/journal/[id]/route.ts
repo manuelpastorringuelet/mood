@@ -10,18 +10,19 @@ interface Params {
 export const PATCH = async (request: Request, { params }: Params) => {
   const { content } = await request.json()
   const user = await getUserByClerkId()
-  const updateEntry = await prisma.journalEntry.update({
+
+  console.log(content)
+  const updatedEntry = await prisma.journalEntry.update({
     where: {
       userId_id: {
-        id: user.id,
-        userId: params.id,
+        id: params.id,
+        userId: user.id,
       },
     },
-
     data: {
-      content: content,
+      content,
     },
   })
 
-  return NextResponse.json({ data: updateEntry })
+  return NextResponse.json({})
 }

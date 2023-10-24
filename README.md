@@ -139,6 +139,12 @@ module.exports = {
 - Create `textarea`, with a `defaultValue` of the entry content, and `onChange` event to update the entry content
 
 21. Update entry content
+
 - Function, Route &Logic to update the entry content
 - `[id]` folder in the `journal` folder
 - `route.ts` file in the `[id]` folder
+
+22. Auto-save entry content
+
+- install `react-autosave`
+- implemented `Autosave` in the `Editor` component

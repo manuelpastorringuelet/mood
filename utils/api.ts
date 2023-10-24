@@ -17,8 +17,6 @@ const sendRequest = async (url: string, method: string, body?: any) => {
   const res = await fetch(new Request(url, options))
 
   if (res.ok) {
-    const data = await res.json()
-    return data.data
   }
 
   return null
