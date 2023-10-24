@@ -112,10 +112,17 @@ module.exports = {
 - Style the components and add them to the `Journal` page
 
 17. Journal Card
+
 - onClick event to the `EntryCard` component
 - Api `journal` route to fetch a single journal entry
 - Create `api.ts` file in the `utils` folder to fetch a journal entry from the database using Prisma
 
-
 18. Entry Cards
+
 - Structure & style the `EntryCard` component
+
+19. New Entry page
+- Create `[id]` folder in the `journal` folder
+- Create `page.tsx` file in the `[id]` folder
+- Use `params` to fetch a single journal entry
+- Add a interface for the `Entry` type using `PrismaClient`
