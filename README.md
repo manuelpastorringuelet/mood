@@ -129,6 +129,11 @@ module.exports = {
 - Add a interface for the `Entry` type using `PrismaClient`
 
 20. Displaying entry details
+
 - Create `Editor` component
 - Add `getEntry` function to the `Entry` page.
 - Modify the prisma schema, changing ` @@index([userId])` to ` @@index([userId, id])`
+
+21. Editor component
+
+- Create `textarea`, with a `defaultValue` of the entry content, and `onChange` event to update the entry content

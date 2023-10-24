@@ -31,9 +31,8 @@ const getEntry = async (id: string) => {
 const EntryPage = async ({ params }: EntryPageParams) => {
   const entry = await getEntry(params.id)
 
-  console.log(entry)
   return (
-    <div>
+    <div className="w-full h-full">
       <Editor entry={entry} />
     </div>
   )
