@@ -155,3 +155,9 @@ module.exports = {
 
 - Install `langchainjs`
 - Create `ai.ts`
+
+25. Consistent Prompts
+
+- Write instructions to generate consistent prompts
+- Install Zod
+- Use a schema to generate more consistent prompts
