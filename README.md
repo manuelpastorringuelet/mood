@@ -186,3 +186,6 @@ await prisma.analysis.upsert({
 ```
 
 - added `onDelete: CASCADE` to the `entry` field in the `Analysis` model in the `schema.prisma` file to delete the analysis data when the entry is deleted
+
+
+28. Revalidation & Client State Management

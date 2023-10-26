@@ -22,7 +22,7 @@ const sendRequest = async (url: string, method: string, body?: any) => {
 
   try {
     const data = await res.json()
-    return data
+    return data.data
   } catch (error) {
     throw new Error('Failed to parse response JSON')
   }
