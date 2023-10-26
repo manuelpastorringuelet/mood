@@ -156,11 +156,33 @@ module.exports = {
 - Install `langchainjs`
 - Create `ai.ts`
 
-1.  Template to create consistent prompts
+25. Template to create consistent prompts
 
 - Write instructions to generate consistent prompts
 - Install Zod
 - Use a schema to generate more consistent prompts, in `parser` function in `ai.ts`
 - `getPrompts function` in `ai.ts`
 - Parse JSON response from OpenAI
-- 
+
+26. Connecting the Sidebar UI
+
+- Add `include: { analysis: true, },` to the prisma call in `page.tsx` in the id folder
+- Destructure `mood`, `summary`, `subject`, `color`, `negative` from the `entry.analysis` object
+
+27. Add analysis data to Entry
+
+- Modify `route.ts` file in the `[id]` folder to update the entry with the analysis data
+
+```ts
+const analysis = await analyze(updatedEntry.content)
+
+await prisma.analysis.upsert({
+  where: {
+    entryId: updatedEntry.id,
+  },
+  data: { entryId: updatedEntry.id, ...analysis },
+  update: analysis,
+})
+```
+
+- added `onDelete: CASCADE` to the `entry` field in the `Analysis` model in the `schema.prisma` file to delete the analysis data when the entry is deleted

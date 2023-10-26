@@ -3,6 +3,8 @@ import { JournalEntry } from '@prisma/client'
 
 import { getUserByClerkId } from '@/utils/auth'
 import { prisma } from '@/utils/db'
+import { updateEntry } from '@/utils/api'
+import { analyze } from '@/utils/ai'
 
 interface Params {
   params: JournalEntry
@@ -12,7 +14,7 @@ export const PATCH = async (request: Request, { params }: Params) => {
   const { content } = await request.json()
   const user = await getUserByClerkId()
 
-  await prisma.journalEntry.update({
+  const updatedEntry = await prisma.journalEntry.update({
     where: {
       userId_id: {
         id: params.id,
@@ -23,6 +25,18 @@ export const PATCH = async (request: Request, { params }: Params) => {
       content,
     },
   })
+
+  const analysis = await analyze(updatedEntry.content)
+
+  if (analysis) {
+    await prisma.analysis.upsert({
+      where: {
+        entryId: updatedEntry.id,
+      },
+      create: { entryId: updatedEntry.id, ...analysis },
+      update: analysis,
+    })
+  }
 
   return NextResponse.json({})
 }
