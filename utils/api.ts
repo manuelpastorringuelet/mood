@@ -4,7 +4,7 @@ const createURL = (path: string) => {
 
 const sendRequest = async (url: string, method: string, body?: any) => {
   const options: RequestInit = {
-    method,
+    method: method,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -16,10 +16,16 @@ const sendRequest = async (url: string, method: string, body?: any) => {
 
   const res = await fetch(new Request(url, options))
 
-  if (res.ok) {
+  if (!res.ok) {
+    throw new Error(`Request failed with status: ${res.status}`)
   }
 
-  return null
+  try {
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw new Error('Failed to parse response JSON')
+  }
 }
 
 export const updateEntry = async (id: string, content: string) => {

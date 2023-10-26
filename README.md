@@ -162,3 +162,5 @@ module.exports = {
 - Install Zod
 - Use a schema to generate more consistent prompts, in `parser` function in `ai.ts`
 - `getPrompts function` in `ai.ts`
+- Parse JSON response from OpenAI
+- 

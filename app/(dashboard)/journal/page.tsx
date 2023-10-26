@@ -18,11 +18,6 @@ const getEntries = async () => {
     },
   })
 
-  await analyze(
-    `Today was a good day. I went to the park and played with my dog. I also went to the store and bought some groceries. :/
-    `,
-  )
-
   return entries
 }
 
