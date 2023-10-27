@@ -8,6 +8,8 @@ import { loadQARefineChain } from 'langchain/chains'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { MemoryVectorStore } from 'langchain/vectorstores/memory'
 
+type PartialJournalEntry = Pick<JournalEntry, 'id' | 'createdAt' | 'content'>
+
 const parser = StructuredOutputParser.fromZodSchema(
   z.object({
     mood: z
@@ -55,7 +57,7 @@ export const analyze = async (content: string) => {
   }
 }
 
-async function qa(question: string, entries: JournalEntry[]) {
+export async function qa(question: string, entries: PartialJournalEntry[]) {
   const docs = entries.map(
     (entry) =>
       new Document({

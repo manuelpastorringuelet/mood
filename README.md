@@ -190,3 +190,4 @@ await prisma.analysis.upsert({
 28. Revalidation & Client State Management
 29. Search UI
 30. Similarity Searches with Vectors
+31. Search API & Results

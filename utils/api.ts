@@ -35,3 +35,7 @@ export const updateEntry = async (id: string, content: string) => {
 export const createNewEntry = async () => {
   return sendRequest(createURL('/api/journal'), 'POST')
 }
+
+export const askQuestion = async (question: string) => {
+  return sendRequest(createURL('/api/question'), 'POST', { question })
+}
