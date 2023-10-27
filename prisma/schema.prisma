@@ -19,6 +19,7 @@ model User {
   clerkId String         @unique
   email   String         @unique
   entries JournalEntry[]
+  analysis Analysis[]
 }
 
 model JournalEntry {
@@ -31,7 +32,7 @@ model JournalEntry {
 
   content String @db.Text
 
-  analysis Analysis?
+  analysis Analysis[]
 
   @@unique([userId,id])
 }
@@ -44,6 +45,9 @@ model Analysis {i
   entryId String
   entry   JournalEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
 
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   mood     String
   summary  String  @db.Text
   subject  String 
@@ -52,4 +56,7 @@ model Analysis {i
   sentimentScore Float @default(0)
 
   @@unique([entryId])
+  @@index([userId])
 }
+
+
