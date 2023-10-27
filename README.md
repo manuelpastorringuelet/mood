@@ -194,4 +194,58 @@ await prisma.analysis.upsert({
 32. Computing a Sentiment Score
 33. Adding Sentiments to Database
 34. Charting Sentiment Values
-35. 
+35. Vite Testing Setup
+
+- install `--save-dev @testing-library/jest-dom @testing-library/react vitest @vitejs/plugin-react-swc jsdom`
+- Create `tsconfig.node.json` file in the root directory and add the following code:
+
+```json
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+```
+
+- Go to the original `tsconfig.json` and add the following code:
+
+```json
+{
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+```
+
+- Create `vite.config.ts` file in the root directory and add the following code:
+
+```ts
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react-swc'
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    include: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'setupTests',
+    mockReset: true,
+  },
+})
+```
+
+- Create the `setupTests.ts` file in the root directory and add the following code:
+
+```ts
+import '@testing-library/jest-dom'
+```
+
+36. Testing
+
+- Create `test` folder in the root directory
+- Write `home.test.tsx`
+- Add `test` script to the `package.json` file
+- Run test
