@@ -192,3 +192,6 @@ await prisma.analysis.upsert({
 30. Similarity Searches with Vectors
 31. Search API & Results
 32. Computing a Sentiment Score
+33. Adding Sentiments to Database
+34. Charting Sentiment Values
+35. 
