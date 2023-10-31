@@ -249,3 +249,21 @@ import '@testing-library/jest-dom'
 - Write `home.test.tsx`
 - Add `test` script to the `package.json` file
 - Run test
+
+37. Deploying to Vercel
+
+- Promote `dev` branch to `main` branch in PlanetScale
+- Change from `development` to `production` in the `Clerk` dashboard
+- Add to `next.config.js` file:
+
+```js
+const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true,
+  },
+}
+```
