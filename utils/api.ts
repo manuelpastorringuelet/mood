@@ -39,3 +39,7 @@ export const createNewEntry = async () => {
 export const askQuestion = async (question: string) => {
   return sendRequest(createURL('/api/question'), 'POST', { question })
 }
+
+export const deleteEntry = async (id: string) => {
+  return sendRequest(createURL(`/api/journal/${id}`), 'DELETE')
+}

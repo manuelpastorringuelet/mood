@@ -13,7 +13,10 @@ import {
   TableBody,
   Table,
 } from '@/components/ui/table'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { Button } from './ui/button'
+import { Trash } from 'lucide-react'
+import { deleteEntry } from '@/utils/api'
 
 interface EntriesTableProps {
   entries: (JournalEntry & { analysis: Analysis[] })[]
@@ -33,6 +36,13 @@ const EntriesTable = ({ entries }: EntriesTableProps) => {
     router.refresh()
   }, [pathname, router])
 
+  const onDelete = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation()
+
+    await deleteEntry(id)
+    router.refresh()
+  }
+
   return (
     <Card className="shadow-lg hover:shadow-xl transition-shadow duration-200 ease-in-out">
       <Table>
@@ -47,7 +57,7 @@ const EntriesTable = ({ entries }: EntriesTableProps) => {
           {entries?.map((entry) => (
             <TableRow
               key={entry.id}
-              className="cursor-pointer"
+              className="cursor-pointer relative"
               onClick={() => onClick(entry.id)}
             >
               <TableCell className="font-medium text-gray-900">
@@ -66,6 +76,12 @@ const EntriesTable = ({ entries }: EntriesTableProps) => {
               >
                 {entry.analysis?.[0].mood}
               </TableCell>
+              <Button
+                className="absolute right-0 top-0 shadow-none hover:text-red-600 text-red-300 transition-shadow duration-200 ease-in-out"
+                onClick={(e) => onDelete(entry.id, e)}
+              >
+                <Trash size={16} />
+              </Button>
             </TableRow>
           ))}
         </TableBody>

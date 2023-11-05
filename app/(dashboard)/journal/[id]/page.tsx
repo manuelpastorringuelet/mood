@@ -18,7 +18,7 @@ export const getEntry = async (id: string) => {
         userId: user.id,
         id,
       },
-    },
+  },
     include: {
       analysis: true,
     },
