@@ -1,5 +1,7 @@
 'use client'
 import { Analysis } from '@prisma/client'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from 'recharts'
 
 const CustomTooltip = ({
@@ -24,18 +26,33 @@ const CustomTooltip = ({
     const analysis = payload[0].payload as Analysis
 
     return (
-      <div className="p-8 custom-tooltip bg-white/5 shadow-md border border-black/10 rounded-lg backdrop-blur-md relative">
+      <div className="p-4 custom-tooltip bg-white/5 shadow-md border border-black/10 rounded-lg backdrop-blur-md relative">
         <div
           className="absolute left-2 top-2 w-2 h-2 rounded-full"
           style={{ background: analysis.color }}
         ></div>
         <p className="label text-sm text-black/30">{dateLabel}</p>
-        <p className="intro text-xl uppercase">{analysis.mood}</p>
+        <p className="intro text-xl uppercase">
+          {analysis.mood}
+          {analysis.sentimentScore < -4
+            ? ' 😔'
+            : analysis.sentimentScore > 4
+            ? ' 😃'
+            : ' 😐'}
+        </p>
+        <p className="desc text-sm text-black/50">{analysis.sentimentScore}</p>
       </div>
     )
   }
 }
 const HistoryChart = ({ data }: { data: Analysis[] }) => {
+  const router = useRouter()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    router.refresh()
+  }, [pathname, router])
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={data} width={300} height={200}>

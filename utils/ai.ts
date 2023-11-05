@@ -15,7 +15,7 @@ const parser = StructuredOutputParser.fromZodSchema(
     sentimentScore: z
       .number()
       .describe(
-        'sentiment of the text and ranked a scale from -10 to 10, where -10 is extremely negative, 0 is neutral and 10 is extremely positive.',
+        'sentiment of the text and ranked a scale from -10 to 10, where -10 is extremely negative, 0 is neutral and 10 is extremely positive. For example, a score of -5 would indicate that the text has a slight negative tone, whereas a score of 5 would indicate a slight positive tone. A score of -2 or 2 would indicate a more moderately  neutral tone.',
       ),
     mood: z
       .string()

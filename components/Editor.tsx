@@ -95,12 +95,14 @@ const Editor = ({ entry }: AnalysisDataProps) => {
               <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
             )}
           </div>
-          <Button
-            className="absolute right-0 top-0 shadow-none hover:text-red-600 text-red-300 transition-shadow duration-200 ease-in-out"
-            onClick={(e) => onDelete(entry.id, e)}
-          >
-            <Trash size={16} />
-          </Button>
+          {!isSaving && (
+            <Button
+              className="absolute right-0 top-0 shadow-none hover:text-red-600 text-red-300 transition-shadow duration-200 ease-in-out"
+              onClick={(e) => onDelete(entry.id, e)}
+            >
+              <Trash size={16} />
+            </Button>
+          )}
         </Card>
 
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-200 ease-in-out">
