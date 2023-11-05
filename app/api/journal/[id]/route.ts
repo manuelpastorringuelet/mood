@@ -25,8 +25,11 @@ export const PATCH = async (request: Request, { params }: Params) => {
       content,
     },
   })
+  let analysis = null
 
-  const analysis = await analyze(updatedEntry.content)
+  if (updatedEntry.content.trim() !== 'Write about your day') {
+    analysis = await analyze(updatedEntry.content)
+  }
 
   if (!analysis)
     return NextResponse.json({

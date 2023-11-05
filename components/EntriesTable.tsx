@@ -1,7 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { format } from 'date-fns'
+import { Analysis, JournalEntry } from '@prisma/client'
 
 import { Card } from '@/components/ui/card'
 import {
@@ -12,7 +13,7 @@ import {
   TableBody,
   Table,
 } from '@/components/ui/table'
-import { Analysis, JournalEntry } from '@prisma/client'
+import { useEffect, useState } from 'react'
 
 interface EntriesTableProps {
   entries: (JournalEntry & { analysis: Analysis[] })[]
@@ -20,12 +21,18 @@ interface EntriesTableProps {
 
 const EntriesTable = ({ entries }: EntriesTableProps) => {
   const router = useRouter()
+  const pathname = usePathname()
 
   const dateFormatted = (date: Date) => format(new Date(date), 'MMM d, yyyy')
 
   const onClick = (id: string) => {
     router.push(`/journal/${id}`)
   }
+
+  useEffect(() => {
+    router.refresh()
+  }, [pathname, router])
+
   return (
     <Card className="shadow-lg hover:shadow-xl transition-shadow duration-200 ease-in-out">
       <Table>
@@ -47,7 +54,11 @@ const EntriesTable = ({ entries }: EntriesTableProps) => {
                 {dateFormatted(entry.createdAt)}
               </TableCell>
               <TableCell className="text-gray-900">
-                {entry.analysis?.[0].summary}
+                {entry.analysis?.[0].summary.length !== 0 ? (
+                  entry.analysis?.[0].summary
+                ) : (
+                  <span className="text-gray-400">Entry empty</span>
+                )}
               </TableCell>
               <TableCell
                 className="text-gray-900"

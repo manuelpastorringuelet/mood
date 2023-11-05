@@ -16,7 +16,20 @@ export const POST = async () => {
     },
   })
 
-  const analysis = await analyze(entry.content)
+  let analysis = null
+
+  if (entry.content.trim() !== 'Write about your day') {
+    analysis = await analyze(entry.content)
+  } else {
+    analysis = {
+      sentimentScore: 0,
+      mood: '',
+      summary: '',
+      subject: '',
+      negative: false,
+      color: '',
+    }
+  }
 
   await prisma.analysis.create({
     data: {

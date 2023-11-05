@@ -7,6 +7,11 @@ const getData = async () => {
   const analysis = await prisma.analysis.findMany({
     where: {
       userId: user.id,
+      entry: {
+        content: {
+          not: 'Write about your day',
+        },
+      },
     },
     orderBy: {
       createdAt: 'asc',
@@ -22,11 +27,9 @@ const History = async () => {
   const { analysis, avg } = await getData()
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full p-6 space-y-4">
       <p>{`Average Sentiment: ${avg}`}</p>
-      <div className="h-full w-full">
-        <HistoryChart data={analysis} />
-      </div>
+      <HistoryChart data={analysis} />
     </div>
   )
 }

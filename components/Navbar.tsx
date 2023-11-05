@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { HomeIcon, Smile, SmilePlus } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { createNewEntry } from '@/utils/api'
@@ -24,29 +25,13 @@ const Navbar = ({ links }: NavbarProps) => {
   }
 
   return (
-    <header className="flex items-center h-16 px-4 border-b border-gray-200 text-gray-900 shrink-0 md:px-6">
-      <nav className="flex gap-6 text-lg font-medium md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+    <header className="flex items-center h-16 px-4 md:px-10 border-b border-gray-200 text-gray-900 shrink-0">
+      <nav className="flex gap-6 text-lg font-medium md:flex-row items-center justify-between w-full md:gap-5 md:text-sm lg:gap-6">
         <Link
-          className="flex items-center gap-2 text-lg font-semibold md:text-base hover:text-gray-600"
-          href="#"
+          className="flex items-center gap-2 text-lg font-semibold  hover:text-gray-600"
+          href="/"
         >
-          <svg
-            className=" w-6 h-6"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-            <line x1="9" x2="9.01" y1="9" y2="9" />
-            <line x1="15" x2="15.01" y1="9" y2="9" />
-          </svg>
+          <Smile className="w-6 h-6" />
           <span className="sr-only">Mood Tracker</span>
         </Link>
         {links.map((link) => (
